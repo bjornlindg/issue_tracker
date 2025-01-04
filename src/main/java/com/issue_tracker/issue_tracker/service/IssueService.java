@@ -27,4 +27,20 @@ public class IssueService {
     public List<Issue> getIssuesByStatus(String status) {
         return issueRepository.findByStatus(status);
     }
+
+    public Issue updateIssue(Long id, Issue updatedIssue) {
+        return issueRepository.findById(id)
+                .map(issue -> {
+                    issue.setTitle(updatedIssue.getTitle());
+                    issue.setDescription(updatedIssue.getDescription());
+                    issue.setStatus(updatedIssue.getStatus());
+                    issue.setUpdatedAt(updatedIssue.getUpdatedAt());
+                    return issueRepository.save(issue);
+                })
+                .orElseThrow(() -> new RuntimeException("Issue not found"));
+    }
+
+    public void deleteIssue(Long id) {
+        issueRepository.deleteById(id);
+    }
 }
