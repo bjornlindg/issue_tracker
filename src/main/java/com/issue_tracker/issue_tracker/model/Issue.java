@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class Issue {
@@ -27,6 +28,29 @@ public class Issue {
 
     public Issue() {
         this.createdAt = LocalDateTime.now();
+    }
+
+    // Parameterized constructor
+    public Issue(@NotBlank String title, String description, @NotBlank String status) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Issue issue = (Issue) o;
+        return Objects.equals(title, issue.title) &&
+                Objects.equals(status, issue.status) &&
+                Objects.equals(createdAt, issue.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, status, createdAt);
     }
 
 
@@ -70,5 +94,16 @@ public class Issue {
         this.updatedAt = updatedAt;
     }
 
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }
 
