@@ -64,6 +64,7 @@ public class Issue {
 
     public void setTitle(String title) {
         this.title = title;
+        refreshUpdatedAt();
     }
 
     public String getDescription() {
@@ -72,6 +73,7 @@ public class Issue {
 
     public void setDescription(String description) {
         this.description = description;
+        refreshUpdatedAt();
     }
 
     public String getStatus() {
@@ -80,6 +82,7 @@ public class Issue {
 
     public void setStatus(String status) {
         this.status = status;
+        refreshUpdatedAt();
     }
 
     public LocalDateTime getCreatedAt() {
@@ -90,8 +93,8 @@ public class Issue {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    private void refreshUpdatedAt() {
+        this.updatedAt = LocalDateTime.now();
     }
 
     @Override

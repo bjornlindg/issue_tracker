@@ -34,7 +34,6 @@ public class IssueService {
                     issue.setTitle(updatedIssue.getTitle());
                     issue.setDescription(updatedIssue.getDescription());
                     issue.setStatus(updatedIssue.getStatus());
-                    issue.setUpdatedAt(updatedIssue.getUpdatedAt());
                     return issueRepository.save(issue);
                 })
                 .orElseThrow(() -> new RuntimeException("Issue not found"));
