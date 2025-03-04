@@ -36,8 +36,8 @@ class IssueControllerTest {
 
     @Test
     void testGetAllIssues() throws Exception {
-        Issue issue1 = new Issue("Issue 1", "Description 1", "Open");
-        Issue issue2 = new Issue("Issue 2", "Description 2", "Closed");
+        Issue issue1 = new Issue("Issue 1", "Description 1");
+        Issue issue2 = new Issue("Issue 2", "Description 2");
 
         when(issueService.getAllIssues()).thenReturn(Arrays.asList(issue1, issue2));
 

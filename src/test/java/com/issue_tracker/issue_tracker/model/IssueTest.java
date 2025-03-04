@@ -10,23 +10,21 @@ class IssueTest {
     void testConstructorAndGetters() {
         String title = "Issue Title";
         String description = "Issue Description";
-        String status = "Open";
 
-        Issue issue = new Issue(title, description, status);
+        Issue issue = new Issue(title, description);
 
         assertEquals(title, issue.getTitle());
         assertEquals(description, issue.getDescription());
-        assertEquals(status, issue.getStatus());
         assertNotNull(issue.getCreatedAt());
     }
 
     @Test
     void testSetters() {
-        Issue issue = new Issue("Initial Title", "Initial Description", "Open");
+        Issue issue = new Issue("Initial Title", "Initial Description");
 
         String newTitle = "Updated Title";
         String newDescription = "Updated Description";
-        String newStatus = "Closed";
+        IssueStatus newStatus = IssueStatus.CLOSED;
 
         issue.setTitle(newTitle);
         issue.setDescription(newDescription);
@@ -39,8 +37,8 @@ class IssueTest {
 
     @Test
     void testEqualsAndHashCode() {
-        Issue issue1 = new Issue("Same Title", "Same Description", "Open");
-        Issue issue2 = new Issue("Same Title", "Same Description", "Open");
+        Issue issue1 = new Issue("Same Title", "Same Description");
+        Issue issue2 = new Issue("Same Title", "Same Description");
 
         assertNotEquals(issue1, issue2);
         assertNotEquals(issue1.hashCode(), issue2.hashCode());
@@ -48,7 +46,7 @@ class IssueTest {
 
     @Test
     void testToString() {
-        Issue issue = new Issue("Title", "Description", "Open");
+        Issue issue = new Issue("Title", "Description");
         String expectedString = "Issue{title='Title', description='Description', status='Open', createdAt=" + issue.getCreatedAt() + "}";
         assertTrue(issue.toString().contains("title='Title'"));
     }

@@ -29,8 +29,8 @@ class IssueServiceTest {
 
     @Test
     void testGetAllIssues() {
-        Issue issue1 = new Issue("Issue 1", "Description 1", "Open");
-        Issue issue2 = new Issue("Issue 2", "Description 2", "Closed");
+        Issue issue1 = new Issue("Issue 1", "Description 1");
+        Issue issue2 = new Issue("Issue 2", "Description 2");
 
         when(issueRepository.findAll()).thenReturn(Arrays.asList(issue1, issue2));
 

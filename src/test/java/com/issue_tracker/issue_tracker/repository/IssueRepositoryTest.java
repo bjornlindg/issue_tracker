@@ -20,7 +20,6 @@ public class IssueRepositoryTest {
     public void testSaveAndFind() {
         Issue issue = new Issue();
         issue.setTitle("Sample Issue");
-        issue.setStatus("Open");
 
         Issue savedIssue = issueRepository.save(issue);
         Optional<Issue> retrievedIssue = issueRepository.findById(savedIssue.getId());

@@ -18,8 +18,8 @@ public class Issue {
 
     private String description;
 
-    @NotBlank
-    private String status; // E.g., "Open", "In Progress", "Closed"
+    @Enumerated(EnumType.STRING)
+    private IssueStatus status;
 
     @NotNull
     private LocalDateTime createdAt;
@@ -28,13 +28,14 @@ public class Issue {
 
     public Issue() {
         this.createdAt = LocalDateTime.now();
+        this.status = IssueStatus.OPEN;
     }
 
     // Parameterized constructor
-    public Issue(@NotBlank String title, String description, @NotBlank String status) {
+    public Issue(@NotBlank String title, String description) {
         this.title = title;
         this.description = description;
-        this.status = status;
+        this.status = IssueStatus.OPEN;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -76,11 +77,11 @@ public class Issue {
         refreshUpdatedAt();
     }
 
-    public String getStatus() {
+    public IssueStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(IssueStatus status) {
         this.status = status;
         refreshUpdatedAt();
     }
