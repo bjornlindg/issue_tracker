@@ -19,6 +19,11 @@ public class IssueController {
         this.issueService = issueService;
     }
 
+    @GetMapping("/{id}")
+    public Issue getIssue(@PathVariable Long id) {
+        return issueService.getIssueById(id);
+    }
+
     @GetMapping
     public List<Issue> getAllIssues() {
         return issueService.getAllIssues();

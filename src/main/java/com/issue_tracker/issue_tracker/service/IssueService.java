@@ -16,6 +16,10 @@ public class IssueService {
         this.issueRepository = issueRepository;
     }
 
+    public Issue getIssueById(Long id) {
+        return issueRepository.findById(id).orElseThrow(() -> new RuntimeException("Issue not found"));
+    }
+
     public List<Issue> getAllIssues() {
         return issueRepository.findAll();
     }
