@@ -26,6 +26,10 @@ public class Issue {
 
     private LocalDateTime updatedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "assigned_user_id")
+    private User assignedUser;
+
     public Issue() {
         this.createdAt = LocalDateTime.now();
         this.status = IssueStatus.OPEN;
@@ -96,6 +100,14 @@ public class Issue {
 
     private void refreshUpdatedAt() {
         this.updatedAt = LocalDateTime.now();
+    }
+
+    public User getAssignedUser() {
+        return assignedUser;
+    }
+
+    public void setAssignedUser(User user) {
+        this.assignedUser = user;
     }
 
     @Override

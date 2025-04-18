@@ -16,6 +16,7 @@ class IssueTest {
         assertEquals(title, issue.getTitle());
         assertEquals(description, issue.getDescription());
         assertNotNull(issue.getCreatedAt());
+        assertNull(issue.getAssignedUser());
     }
 
     @Test
@@ -26,13 +27,17 @@ class IssueTest {
         String newDescription = "Updated Description";
         IssueStatus newStatus = IssueStatus.CLOSED;
 
+        User user = new User("John", "Doe");
+
         issue.setTitle(newTitle);
         issue.setDescription(newDescription);
         issue.setStatus(newStatus);
+        issue.setAssignedUser(user);
 
         assertEquals(newTitle, issue.getTitle());
         assertEquals(newDescription, issue.getDescription());
         assertEquals(newStatus, issue.getStatus());
+        assertEquals(user, issue.getAssignedUser());
     }
 
     @Test
@@ -50,4 +55,6 @@ class IssueTest {
         String expectedString = "Issue{title='Title', description='Description', status='Open', createdAt=" + issue.getCreatedAt() + "}";
         assertTrue(issue.toString().contains("title='Title'"));
     }
+
+
 }
