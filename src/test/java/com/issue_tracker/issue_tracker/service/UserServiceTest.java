@@ -84,5 +84,32 @@ public class UserServiceTest {
         verify(userRepository, never()).save(any());
     }
 
+    @Test
+    public void testDeleteUser_Success() {
+        Long userId = 1L;
+
+        when(userRepository.existsById(userId)).thenReturn(true);
+
+        userService.deleteUser(userId);
+
+        verify(userRepository).existsById(userId);
+        verify(userRepository).deleteById(userId);
+    }
+
+    @Test
+    public void testDeleteUser_UserNotFound() {
+        Long userId = 2L;
+
+        when(userRepository.existsById(userId)).thenReturn(false);
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            userService.deleteUser(userId);
+        });
+
+        assertEquals("User not found", exception.getMessage());
+
+        verify(userRepository, never()).deleteById(anyLong());
+    }
+
 
 }
