@@ -1,12 +1,9 @@
 package com.issue_tracker.issue_tracker.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.issue_tracker.issue_tracker.model.User;
 import com.issue_tracker.issue_tracker.service.UserService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -30,11 +27,6 @@ public class UserControllerTest {
 
     @MockitoBean
     private UserService userService;
-
-//    @BeforeEach
-//    void setUp() {
-//        MockitoAnnotations.openMocks(this);
-//    }
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
