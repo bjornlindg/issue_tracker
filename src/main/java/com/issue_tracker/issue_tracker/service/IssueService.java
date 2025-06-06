@@ -38,6 +38,7 @@ public class IssueService {
                     issue.setTitle(updatedIssue.getTitle());
                     issue.setDescription(updatedIssue.getDescription());
                     issue.setStatus(updatedIssue.getStatus());
+                    issue.setAssignedUser(updatedIssue.getAssignedUser());
                     return issueRepository.save(issue);
                 })
                 .orElseThrow(() -> new RuntimeException("Issue not found"));
